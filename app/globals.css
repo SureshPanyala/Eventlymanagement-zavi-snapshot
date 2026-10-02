@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Evently — light editorial theme for every visitor (no OS scheme flip). */
+:root {
+  color-scheme: light;
+  --bg: #fbf8f5;
+  --surface: #ffffff;
+  --surface-2: #f4efe9;
+  --border: #e8e1d9;
+  --text: #1c1917;
+  --text-muted: #6b625a;
+  --accent: #cf3f24;
+  --accent-fg: #ffffff;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-bg text-text antialiased font-sans;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out both;
+  }
+  .animate-fade-in-up-delay {
+    animation: fade-in-up 0.5s ease-out 0.12s both;
+  }
+}
+
+.banner-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+}

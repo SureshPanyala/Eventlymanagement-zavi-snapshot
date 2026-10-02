@@ -1,0 +1,26 @@
+# render.yaml — placeholder. Zavi provisions Render services via API today,
+# but checking this file in lets a maintainer (or a fork) re-deploy without
+# touching the dashboard. Edit values to taste before relying on it.
+#
+# buildCommand MUST stay `npm ci`, matching what Zavi sets on the API-created
+# service. `npm ci` installs only the exact, integrity-hashed artifacts in
+# package-lock.json and refuses to run when the lock and package.json disagree;
+# `npm install` would instead resolve any package NAME straight from the public
+# registry and run it in this live app. Weakening it here reopens that hole for
+# anyone who deploys from this file.
+services:
+  - type: web
+    name: company-app
+    env: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.1
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
